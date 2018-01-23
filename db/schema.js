@@ -2,6 +2,29 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 
+const CourseScema = new Schema({
+    courseName: {
+        type: String,
+        required: [true, 'Course name is required']
+    },
+    location: {
+        type: String,
+        required: false
+    },
+    holes: {
+        type: Number,
+        required: false
+    },
+    teePad: {
+        type: String,
+        required: false
+    },
+    photoUrl: {
+        type: String,
+        required: false
+    }
+})
+
 const DiscSchema = new Schema({
     discType: {
         type: String,
@@ -56,5 +79,6 @@ const UserSchema = new Schema({
 
 module.exports = {
     UserSchema,
-    DiscSchema
+    DiscSchema,
+    CourseSchema
 }
