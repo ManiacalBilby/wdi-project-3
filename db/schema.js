@@ -1,5 +1,26 @@
-const mongoose = require ('mongoose')
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+
+
+const DiscSchema = new Schema({
+    discType: {
+        type: String,
+        enum: ['Distance driver', 'Fairway driver', 'Mid-range', 'Putter'],
+        required: [true, 'Disc type is required']
+    },
+    photoUrl: {
+        type: String,
+        required: false
+    },
+    brand: {
+        type: String,
+        required: false
+    },
+    color: {
+        type: String,
+        required: false
+    }
+})
 
 const UserSchema = new Schema({
     firstName: {
@@ -28,11 +49,12 @@ const UserSchema = new Schema({
     Discs: [DiscSchema]
 },
     {
-    timestamps: {},
-    usePushEach: true
+        timestamps: {},
+        usePushEach: true
     }
 )
 
 module.exports = {
-    UserSchema
+    UserSchema,
+    DiscSchema
 }
