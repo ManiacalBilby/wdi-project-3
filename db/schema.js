@@ -31,11 +31,15 @@ const DiscSchema = new Schema({
         enum: ['Distance driver', 'Fairway driver', 'Mid-range', 'Putter'],
         required: [true, 'Disc type is required']
     },
-    photoUrl: {
+    discMake: {
         type: String,
         required: false
     },
-    brand: {
+    discModel: {
+        type: String,
+        required: false
+    },
+    photoUrl: {
         type: String,
         required: false
     },
