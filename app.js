@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //register Controllers
-const usersController = require('./controllers/usersController')
+const usersController = require('./routes/usersController')
 app.use('/api/users', usersController)
 
 // catch 404 and forward to error handler
