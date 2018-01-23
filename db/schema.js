@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 
-const CourseScema = new Schema({
+const CourseSchema = new Schema({
     courseName: {
         type: String,
         required: [true, 'Course name is required']
@@ -72,8 +72,8 @@ const UserSchema = new Schema({
         enum: ['Right', 'Left', 'Ambi'],
         required: false
     },
-    Courses: [CourseSchema],
-    Discs: [DiscSchema]
+    courses: [CourseSchema],
+    discs: [DiscSchema]
 },
     {
         timestamps: {},
