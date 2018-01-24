@@ -15,6 +15,36 @@ class HomePage extends Component {
             })
     }
 
+    createUser = () => {
+        axios.post('/api/users', {
+            user: this.state.user
+        })
+        .then((res) => {
+            const newUsers = [...this.state.users]
+            newUsers.push(res.data)
+            this.setState({users: newUsers})
+        })
+    }
+
+    // createUser = async () => {
+    //     const response = await axios.post('/api/users')
+    //     const newUser = response.data
+    //     const newUsers = [...this.state.users]
+    //     newUsers.push(newUser)
+    //     this.setState({users: newUsers})
+    // }
+
+    handleChange = (event) => {
+        const user = {...this.state.user}
+        user[event.target.name] = event.target.value
+        this.setState({user})
+    }
+
+    handleSignUp = (event) => {
+        event.preventDefault()
+        this.createUser()
+    }
+
     componentWillMount() {
         this.getAllUsers()
     }
@@ -23,7 +53,7 @@ class HomePage extends Component {
         console.log(this.state.users)
         return (
             <div>
-                <h1>Home Page!!!</h1>
+                <h1>Home Page</h1>
                 <div>
                     {this.state.users.map((user) => {
                         return (<div key={user._id}>
@@ -35,9 +65,41 @@ class HomePage extends Component {
                         )
                     })}
                 </div>
+                <h1>Add new user</h1>
+                <form onSubmit={this.handleSignUp}>
+                <div>
+                    <label htmlFor="firstName">First Name</label>
+                    <input onChange={this.handleChange} name="firstName" type="text" value={this.state.firstName}/>
+                </div>
+                <div>
+                    <label htmlFor="lastName">Last Name</label>
+                    <input onChange={this.handleChange} name="lastName" type="text" value={this.state.lastName}/>
+                </div>
+                <div>
+                    <label htmlFor="username">Username</label>
+                    <input onChange={this.handleChange} name="username" type="text" value={this.state.username}/>
+                </div>
+                <div>
+                    <label htmlFor="photoUrl">Photo Link</label>
+                    <input onChange={this.handleChange} name="photoUrl" type="text" value={this.state.photoUrl}/>
+                </div>
+                <div>
+                    <label htmlFor="throwingHand">Throwing Hand</label>
+                    <input onChange={this.handleChange} name="throwingHand" type="text" value={this.state.throwingHand}/>
+                </div>
+                <button>Sign up</button>
+                </form>
             </div>
         )
     }
 }
 
+// Id: String
+// First Name: String
+// Last Name: String
+// Username: String
+// Image: String
+// Throwing Hand: String
+// Discs: [ ]
+// Courses: [ ]
 export default HomePage
