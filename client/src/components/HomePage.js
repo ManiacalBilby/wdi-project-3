@@ -26,14 +26,6 @@ class HomePage extends Component {
         })
     }
 
-    // createUser = async () => {
-    //     const response = await axios.post('/api/users')
-    //     const newUser = response.data
-    //     const newUsers = [...this.state.users]
-    //     newUsers.push(newUser)
-    //     this.setState({users: newUsers})
-    // }
-
     handleChange = (event) => {
         const user = {...this.state.user}
         user[event.target.name] = event.target.value
@@ -94,13 +86,4 @@ class HomePage extends Component {
         )
     }
 }
-
-// Id: String
-// First Name: String
-// Last Name: String
-// Username: String
-// Image: String
-// Throwing Hand: String
-// Discs: [ ]
-// Courses: [ ]
 export default HomePage

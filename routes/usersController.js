@@ -19,5 +19,15 @@ router.post('/', (req, res) => {
     .catch((error) => console.log(error))
 })
 
+router.delete('/:userId/delete', (req, res) => {
+    const userId = request.params.userId
+
+    User.findByIdAndRemove(userId)
+    .then((user) => {
+        res.json(user)
+    })
+    .catch((error) => console.log(error))
+})
+
 
 module.exports = router
