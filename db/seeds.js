@@ -61,7 +61,7 @@ User.remove({}).then(() => {
         discType: 'Distance driver',
         discMake: 'Prodigy',
         discModel: 'D1',
-        photoUrl: 'https://www.innovadiscs.com/wp-content/uploads/2016/01/vulcan_01.jpg',
+        photoUrl: 'https://infinitediscs.com/Inf_Uploads/Disc_Images/da6e3f23-927e-4137-9a78-4d7bc4e3f0afProdigy%20D1%20400S.jpg',
         color: 'Blue'
     })
 

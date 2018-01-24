@@ -10,5 +10,14 @@ router.get('/', (req, res) => {
     .catch((error) => console.log(error))
 })
 
+router.post('/', (req, res) => {
+    const newUser = new User(req.body.user)
+    newUser.save()
+    .then((user) => {
+        res.json(user)
+    })
+    .catch((error) => console.log(error))
+})
+
 
 module.exports = router
