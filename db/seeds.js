@@ -48,6 +48,40 @@ User.remove({}).then(() => {
 .catch((error) => {
     console.log(error)
 })
+.then(() => {
+    const janeDoe = new User({
+        firstName: 'Jane',
+        lastName: 'Doe',
+        username: 'DoeHunter',
+        photoUrl: 'https://www.placecage.com/200/300',
+        throwingHand: 'Left'
+    })
+
+    const prodigyDistanceDriver = new Disc({
+        discType: 'Distance driver',
+        discMake: 'Prodigy',
+        discModel: 'D1',
+        photoUrl: 'https://www.innovadiscs.com/wp-content/uploads/2016/01/vulcan_01.jpg',
+        color: 'Blue'
+    })
+
+    janeDoe.discs.push(prodigyDistanceDriver)
+
+    const oregonPark = new Course({
+        courseName: 'Oregon Park',
+        location: 'Marietta',
+        holes: '18',
+        teePad: 'Concrete',
+        photoUrl: 'http://www.exploregeorgia.org/master/img/blog/2015/07/candycook_discgolf_deerlickpark.jpg'
+    })
+
+    janeDoe.courses.push(oregonPark)
+
+    return janeDoe.save()
+})
+.catch((error) => {
+    console.log(error)
+})
 
 .then(() => {
     mongoose.connection.close()
