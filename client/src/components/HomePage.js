@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 class HomePage extends Component {
     state = {
-        users: []
+        users: [] 
     }
 
     getAllUsers = () => {
@@ -56,9 +56,10 @@ class HomePage extends Component {
                 <h1>Home Page</h1>
                 <div>
                     {this.state.users.map((user) => {
-                        return (<div key={user._id}>
+                        return (
+                        <div key={user._id}>
                             <div>
-                                {user.username}
+                                <Link to={`/user/${user._id}`}>{user.username}</Link>
                             </div>
                             <img src={user.photoUrl} alt="user"/>
                         </div>
