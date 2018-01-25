@@ -32,5 +32,19 @@ router.delete('/:userId', (req, res) => {
     .catch((error) => console.log(error))
 })
 
+router.patch('/:userId', (req, res) => {
+    console.log("Entering Edit")
+    const userId = req.params.userId
+    const updatedUserInfo = req.body.user
+    console.log("Updating: ", userId)
+
+    User.findByIdAndUpdate(userId, updatedUserInfo, {new: true})
+    .then((user) => {
+        console.log("Returning: ", user)
+        res.json(user)
+    })
+    .catch((error) => console.log(error))
+})
+
 
 module.exports = router
