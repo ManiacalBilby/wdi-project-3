@@ -26,6 +26,19 @@ class HomePage extends Component {
         })
     }
 
+
+    deleteUser = (userid) => {
+        console.log(userid)
+        axios.delete('/api/users/' + userid)
+        .then((res) => {
+            console.log("Deleted!")
+            const newUsers = [...this.state.users]
+            const userToDelete = this.state.users.indexOf(userid)
+            newUsers.splice(userToDelete, 1)
+            this.setState({users: newUsers})
+        })
+    }
+
     handleChange = (event) => {
         const user = {...this.state.user}
         user[event.target.name] = event.target.value
@@ -51,9 +64,10 @@ class HomePage extends Component {
                         return (
                         <div key={user._id}>
                             <div>
-                                <Link to={`/user/${user._id}`}>{user.username}</Link>
+                                <Link to={`/users/${user._id}`}>{user.username}</Link>
                             </div>
                             <img src={user.photoUrl} alt="user"/>
+                            <button onClick={() => this.deleteUser(user._id)}>Delete User</button>
                         </div>
                         )
                     })}
