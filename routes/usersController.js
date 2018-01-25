@@ -19,6 +19,16 @@ router.post('/', (req, res) => {
     .catch((error) => console.log(error))
 })
 
+router.get('/:userId', (req, res) => {
+    console.log("USERID being searched:", req.params.userId)
+    User.findById(req.params.userId)
+    .then(user => {
+        console.log("User found:", user)
+        res.json(user)
+    })
+    .catch((error) => console.log(error))
+})
+
 router.delete('/:userId', (req, res) => {
     console.log("Entering Delete")
     const userId = req.params.userId
@@ -34,8 +44,9 @@ router.delete('/:userId', (req, res) => {
 
 router.patch('/:userId', (req, res) => {
     console.log("Entering Edit")
+    console.log(req.body)
     const userId = req.params.userId
-    const updatedUserInfo = req.body.user
+    const updatedUserInfo = req.body
     console.log("Updating: ", userId)
 
     User.findByIdAndUpdate(userId, updatedUserInfo, {new: true})

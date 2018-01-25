@@ -26,16 +26,6 @@ class HomePage extends Component {
             })
     }
 
-    updateUser = async (userid) => {
-        try {
-            console.log(userid)
-            await axios.patch(`/api/users/${userid}`)
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     deleteUser = (userid) => {
         console.log(userid)
         axios.delete('/api/users/' + userid)
@@ -81,29 +71,6 @@ class HomePage extends Component {
                                     <Link to={`/users/${user._id}`}>{user.username}</Link>
                                 </div>
                                 <img src={user.photoUrl} alt="user" />
-                                <form onSubmit={this.handleEdit}>
-                                    <div>
-                                        <label htmlFor="firstName">First Name</label>
-                                        <input onChange={this.handleChange} name="firstName" type="text" value={user.firstName} />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="lastName">Last Name</label>
-                                        <input onChange={this.handleChange} name="lastName" type="text" value={user.lastName} />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="username">Username</label>
-                                        <input onChange={this.handleChange} name="username" type="text" value={user.username} />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="photoUrl">Photo Link</label>
-                                        <input onChange={this.handleChange} name="photoUrl" type="text" value={user.photoUrl} />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="throwingHand">Throwing Hand</label>
-                                        <input onChange={this.handleChange} name="throwingHand" type="text" value={user.throwingHand} />
-                                    </div>
-                                    <button>Update User</button>
-                                </form>
                                 <button onClick={() => this.deleteUser(user._id)}>Delete User</button>
                             </div>
                         )
