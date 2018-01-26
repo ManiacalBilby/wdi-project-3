@@ -50,7 +50,7 @@ class App extends Component {
   }
 
   render() {
-    const UserPageComponent = () => (<UserPage/>)
+    const UserPageComponent = (props) => (<UserPage {...props}/>)
     const NewUserPageComponent = () => (<NewUserPage users={this.state.users} createUser = {this.createUser}/> )
     const UserListComponent = () => (<UserList users={this.state.users} deleteUser={this.deleteUser}/>)
     return (
