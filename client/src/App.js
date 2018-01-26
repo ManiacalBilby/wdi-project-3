@@ -3,7 +3,7 @@ import axios from 'axios'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // import styled from 'styled-components'
 import HomePage from './components/HomePage'
-import UserPage from './components/UserPage'
+import EditUserPage from './components/EditUserPage'
 
 class App extends Component {
   state = {
@@ -58,13 +58,13 @@ class App extends Component {
 
   render() {
     const HomePageComponent = () => (<HomePage users={this.state.users} deleteUser={this.deleteUser} createUser = {this.createUser}/> )
-    // const UserPageComponent = () => (<UserPage updateUser={this.updateUser}/>)
+    // const EditUserPageComponent = () => (<EditUserPage updateUser={this.updateUser}/>)
     return (
       <Router>
         <div>
           <Switch>
             <Route exact path="/" component={HomePageComponent} />
-            <Route exact path="/users/:userId" component={UserPage} />
+            <Route exact path="/users/:userId" component={EditUserPage} />
           </Switch>
         </div>
       </Router>

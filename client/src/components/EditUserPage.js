@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-class UserPage extends Component {
+class EditUserPage extends Component {
 
     state = {
         user: {
@@ -98,4 +98,4 @@ class UserPage extends Component {
     }
 }
 
-export default UserPage
+export default EditUserPage
