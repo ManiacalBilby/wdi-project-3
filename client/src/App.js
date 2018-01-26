@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // import styled from 'styled-components'
 import NewUserPage from './components/NewUserPage'
 import EditUserPage from './components/EditUserPage'
+import UserList from './components/UserList'
 
 class App extends Component {
   state = {
@@ -34,15 +35,15 @@ class App extends Component {
       })
   }
 
-  updateUser = async (userid) => {
-    try {
-        console.log(this.state.user._id)
-        await axios.patch(`/api/users/${this.state.user._id}`, this.state)
+//   updateUser = async (userid) => {
+//     try {
+//         console.log(this.state.user._id)
+//         await axios.patch(`/api/users/${this.state.user._id}`, this.state)
 
-    } catch (error) {
-        console.log(error)
-    }
-}
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
 
   deleteUser = (userid) => {
     console.log(userid)
@@ -57,13 +58,14 @@ class App extends Component {
   }
 
   render() {
-    const NewUserPageComponent = () => (<NewUserPage users={this.state.users} deleteUser={this.deleteUser} createUser = {this.createUser}/> )
-    // const EditUserPageComponent = () => (<EditUserPage updateUser={this.updateUser}/>)
+    const NewUserPageComponent = () => (<NewUserPage users={this.state.users} createUser = {this.createUser}/> )
+    const UserListComponent = () => (<UserList users={this.state.users} deleteUser={this.deleteUser}/>)
     return (
       <Router>
         <div>
           <Switch>
-            <Route exact path="/" component={NewUserPageComponent} />
+            <Route exact path="/" component={UserListComponent}/>
+            <Route exact path="/new" component={NewUserPageComponent} />
             <Route exact path="/users/:userId" component={EditUserPage} />
           </Switch>
         </div>
