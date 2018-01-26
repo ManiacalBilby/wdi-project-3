@@ -48,7 +48,7 @@ router.patch('/:userId', (req, res) => {
     console.log(req.body)
     const userId = req.params.userId
     const updatedUserInfo = req.body
-    console.log("Updating: ", userId)
+    console.log("Updating: ", userId, req.body)
 
     User.findByIdAndUpdate(userId, updatedUserInfo, {new: true})
     .then((user) => {

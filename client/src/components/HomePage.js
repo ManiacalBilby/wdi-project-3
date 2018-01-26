@@ -31,7 +31,7 @@ class HomePage extends Component {
     }
 
     render() {
-        console.log(this.props.createUser)
+        // console.log(this.props.createUser)
         return (
             <div>
                 <h1>Home Page</h1>
@@ -43,7 +43,7 @@ class HomePage extends Component {
                                     <Link to={`/users/${user._id}`}>{user.username}</Link>
                                 </div>
                                 <img src={user.photoUrl} alt="user" />
-                                <button onClick={() => this.deleteUser(user._id)}>Delete User</button>
+                                <button onClick={() => this.props.deleteUser(user._id)}>Delete User</button>
                             </div>
                         )
                     })}

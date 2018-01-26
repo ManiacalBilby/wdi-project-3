@@ -34,6 +34,16 @@ class App extends Component {
       })
   }
 
+  updateUser = async (userid) => {
+    try {
+        console.log(this.state.user._id)
+        await axios.patch(`/api/users/${this.state.user._id}`, this.state)
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
   deleteUser = (userid) => {
     console.log(userid)
     axios.delete('/api/users/' + userid)
@@ -48,6 +58,7 @@ class App extends Component {
 
   render() {
     const HomePageComponent = () => (<HomePage users={this.state.users} deleteUser={this.deleteUser} createUser = {this.createUser}/> )
+    // const UserPageComponent = () => (<UserPage updateUser={this.updateUser}/>)
     return (
       <Router>
         <div>
