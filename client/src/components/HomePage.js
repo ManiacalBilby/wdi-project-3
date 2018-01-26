@@ -52,7 +52,7 @@ class HomePage extends Component {
                 <form onSubmit={this.handleSignUp}>
                     <div>
                         <label htmlFor="firstName">First Name</label>
-                        <input onChange={this.handleChange} name="firstName" type="text" value={this.state.user.firstName} />
+                        <input onChange={this.handleChange} name="firstName" type="text" value={this.state.firstName} />
                     </div>
                     <div>
                         <label htmlFor="lastName">Last Name</label>
