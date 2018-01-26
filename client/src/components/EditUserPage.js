@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import {Redirect} from 'react-router-dom'
 
 class EditUserPage extends Component {
 
@@ -10,8 +11,8 @@ class EditUserPage extends Component {
             username: '',
             photoUrl: '',
             throwingHand: ''
-
-        }
+        },
+        redirect: false
     }
 
     componentWillMount() {
@@ -44,7 +45,6 @@ class EditUserPage extends Component {
         try {
             console.log(this.state.user._id)
             await axios.patch(`/api/users/${this.state.user._id}`, this.state.user)
-
         } catch (error) {
             console.log(error)
         }
