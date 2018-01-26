@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // import styled from 'styled-components'
+import UserPage from './components/UserPage'
 import NewUserPage from './components/NewUserPage'
 import EditUserPage from './components/EditUserPage'
 import UserList from './components/UserList'
@@ -58,6 +59,7 @@ class App extends Component {
   }
 
   render() {
+    const UserPageComponent = () => (<UserPage/>)
     const NewUserPageComponent = () => (<NewUserPage users={this.state.users} createUser = {this.createUser}/> )
     const UserListComponent = () => (<UserList users={this.state.users} deleteUser={this.deleteUser}/>)
     return (
@@ -66,7 +68,8 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={UserListComponent}/>
             <Route exact path="/new" component={NewUserPageComponent} />
-            <Route exact path="/users/:userId" component={EditUserPage} />
+            <Route exact path="/users/:userId/edit" component={EditUserPage} />
+            <Route exact path="/users/:userId" component={UserPageComponent}/>
           </Switch>
         </div>
       </Router>

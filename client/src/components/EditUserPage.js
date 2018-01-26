@@ -66,7 +66,7 @@ class EditUserPage extends Component {
         console.log(this.state.user._id)
         return (
             <div>
-                <h1>User Page</h1>
+                <h1>Edit User</h1>
                 <div>
                     <form onSubmit={this.handleEdit}>
                         <div>
