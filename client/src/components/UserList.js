@@ -6,7 +6,7 @@ class UserList extends Component {
         return(
             <div>
                 {<h1>Users List Page</h1> }
-                {<div>
+                <div>
                     {this.props.users.map((user) => {
                         return (
                             <div key={user._id}>
@@ -18,7 +18,8 @@ class UserList extends Component {
                             </div>
                         )
                     })}
-                </div>}
+                </div>
+                <button><Link to={"/new"}>Add New User</Link></button>
             </div>
         )
     }
