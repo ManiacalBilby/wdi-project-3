@@ -1,41 +1,16 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+// import axios from 'axios'
 
 class HomePage extends Component {
     state = {
-        users: []
-    }
-
-    getAllUsers = () => {
-        axios.get('/api/users')
-            .then(res => {
-                console.log(res.data)
-                this.setState({ users: res.data })
-            })
-    }
-
-    createUser = () => {
-        axios.post('/api/users', {
-            user: this.state.user
-        })
-            .then((res) => {
-                const newUsers = [...this.state.users]
-                newUsers.push(res.data)
-                this.setState({ users: newUsers })
-            })
-    }
-
-    deleteUser = (userid) => {
-        console.log(userid)
-        axios.delete('/api/users/' + userid)
-            .then((res) => {
-                console.log("Deleted!")
-                const newUsers = [...this.state.users]
-                const userToDelete = this.state.users.indexOf(userid)
-                newUsers.splice(userToDelete, 1)
-                this.setState({ users: newUsers })
-            })
+        user: {
+            firstName: '',
+            lastName: '',
+            username: '',
+            photoUrl: '',
+            throwingHand: ''
+        }
     }
 
     handleChange = (event) => {
@@ -46,7 +21,8 @@ class HomePage extends Component {
 
     handleSignUp = (event) => {
         event.preventDefault()
-        this.createUser()
+        console.log(this.state.user)
+        this.props.createUser(this.state.user)
     }
 
     handleEdit = (event) => {
@@ -54,17 +30,13 @@ class HomePage extends Component {
         this.updateUser()
     }
 
-    componentWillMount() {
-        this.getAllUsers()
-    }
-
     render() {
-        console.log(this.state.users)
+        console.log(this.props.createUser)
         return (
             <div>
                 <h1>Home Page</h1>
                 <div>
-                    {this.state.users.map((user) => {
+                    {this.props.users.map((user) => {
                         return (
                             <div key={user._id}>
                                 <div>
@@ -80,7 +52,7 @@ class HomePage extends Component {
                 <form onSubmit={this.handleSignUp}>
                     <div>
                         <label htmlFor="firstName">First Name</label>
-                        <input onChange={this.handleChange} name="firstName" type="text" value={this.state.firstName} />
+                        <input onChange={this.handleChange} name="firstName" type="text" value={this.state.user.firstName} />
                     </div>
                     <div>
                         <label htmlFor="lastName">Last Name</label>
