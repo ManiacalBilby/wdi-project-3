@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 // import axios from 'axios'
 
-class HomePage extends Component {
+class NewUserPage extends Component {
     state = {
         user: {
             firstName: '',
@@ -34,8 +34,8 @@ class HomePage extends Component {
         // console.log(this.props.createUser)
         return (
             <div>
-                <h1>Home Page</h1>
-                <div>
+                {/* <h1>Users List Page</h1> */}
+                {/* <div>
                     {this.props.users.map((user) => {
                         return (
                             <div key={user._id}>
@@ -47,7 +47,7 @@ class HomePage extends Component {
                             </div>
                         )
                     })}
-                </div>
+                </div> */}
                 <h1>Add new user</h1>
                 <form onSubmit={this.handleSignUp}>
                     <div>
@@ -76,4 +76,4 @@ class HomePage extends Component {
         )
     }
 }
-export default HomePage
+export default NewUserPage
