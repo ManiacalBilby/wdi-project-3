@@ -9,7 +9,8 @@ import UserList from './components/UserList'
 
 class App extends Component {
   state = {
-    users: []
+    users: [],
+    user : {}
   }
   componentWillMount() {
     this.getAllUsers()
@@ -35,16 +36,6 @@ class App extends Component {
         this.setState({ users: newUsers })
       })
   }
-
-//   updateUser = async (userid) => {
-//     try {
-//         console.log(this.state.user._id)
-//         await axios.patch(`/api/users/${this.state.user._id}`, this.state)
-
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
 
   deleteUser = (userid) => {
     console.log(userid)
