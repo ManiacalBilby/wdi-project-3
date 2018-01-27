@@ -72,7 +72,7 @@ User.remove({}).then(() => {
         location: 'Marietta',
         holes: '18',
         teePad: 'Concrete',
-        photoUrl: 'http://www.exploregeorgia.org/master/img/blog/2015/07/candycook_discgolf_deerlickpark.jpg'
+        photoUrl: 'https://i.ytimg.com/vi/_OYKngd8_P0/maxresdefault.jpg'
     })
 
     janeDoe.courses.push(oregonPark)
