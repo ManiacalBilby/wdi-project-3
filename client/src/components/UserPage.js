@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+const PhotoImg = styled.img`
+width: 300px;
+height: 300px;
+border-radius: 50%;
+`
 
 class UserPage extends Component {
 
@@ -8,6 +15,8 @@ class UserPage extends Component {
         user: {},
         courses: []
     }
+
+
 
     componentWillMount() {
         this.getUser()
@@ -44,7 +53,7 @@ class UserPage extends Component {
                         <div>
                             {course.courseName}
                         </div>
-                            <img src={course.photoUrl} alt={`photo of ${course.courseName}`}/>
+                            <PhotoImg src={course.photoUrl} alt={`photo of ${course.courseName}`}/>
                             <div>{course.location}</div>
                         </div>
                     )
