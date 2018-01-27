@@ -38,14 +38,19 @@ class UserPage extends Component {
             <div>
                 <h1>{this.state.user.username}'s page</h1>
                 <div>
-                    Discs Link
+                {this.state.courses.map((course)=> {
+                    return(
+                        <div key={course._id}>
+                        <div>
+                            {course.courseName}
+                        </div>
+                            <img src={course.photoUrl} alt={`photo of ${course.courseName}`}/>
+                            <div>{course.location}</div>
+                        </div>
+                    )
+                })}
                 </div>
-                <div>
-                    Courses Link
-                </div>
-                <div>
-                    <Link to={`/users/${this.props.match.params.userId}/edit`}>Edit User</Link>
-                </div>
+                <Link to={`/users/${this.props.match.params.userId}/edit`}>Edit User</Link>
             </div>
         )
     }
