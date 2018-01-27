@@ -46,6 +46,9 @@ app.use(cookieParser());
 const usersController = require('./routes/usersController')
 app.use('/api/users', usersController)
 
+const coursesController = require('./routes/coursesController')
+app.use('/api/users/:userId/courses', coursesController)
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

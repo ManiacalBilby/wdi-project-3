@@ -1,7 +1,17 @@
 const express = require('express')
-const Course = require('../db/models/Course')
-const router = express.Router()
+const router = express.Router({mergeParams: true})
+const User = require('../db/models/User')
 
+router.get('/', (req, res) => {
+    const userId = req.params.userId
+
+    User.findById(userId)
+    .then((user) => {
+        console.log(user.courses)
+        res.json(user.courses)
+    })
+    .catch((error) => console.log(error))
+})
 
 
 
