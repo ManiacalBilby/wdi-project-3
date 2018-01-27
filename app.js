@@ -49,6 +49,8 @@ app.use('/api/users', usersController)
 const coursesController = require('./routes/coursesController')
 app.use('/api/users/:userId/courses', coursesController)
 
+const discsController = require('./routes/discsController')
+app.use('/api/users/:userId/discs', discsController)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

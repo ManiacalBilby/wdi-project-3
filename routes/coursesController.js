@@ -3,6 +3,7 @@ const router = express.Router({mergeParams: true})
 const User = require('../db/models/User')
 
 router.get('/', (req, res) => {
+    console.log(req.params.userId)
     const userId = req.params.userId
 
     User.findById(userId)
