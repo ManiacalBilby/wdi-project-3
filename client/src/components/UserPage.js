@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom'
 class UserPage extends Component {
 
     state = {
-        user: {}
+        user: {},
+        courses: []
     }
 
     componentWillMount() {
         this.getUser()
+        this.getCourses()
     }
 
     getUser = () => {
@@ -19,6 +21,14 @@ class UserPage extends Component {
                 console.log("Response from API:", res.data)
                 this.setState({ user: res.data })
                 console.log("User in state:", this.state.user)
+            })
+    }
+
+    getCourses = () => {
+        axios.get(`/api/users/${this.props.match.params.userId}/courses`)
+            .then(res => {
+                console.log(res.data)
+                this.setState({ courses: res.data })
             })
     }
 
