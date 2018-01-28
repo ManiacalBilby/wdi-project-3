@@ -3,9 +3,27 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-const PhotoImg = styled.img`
+const WrapperDiv = styled.div`
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+`
+const CourseDiv = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+`
+
+const CoursePhotoImg = styled.img`
 width: 300px;
 height: 300px;
+border-radius: 50%;
+`
+const DiscPhotoImg = styled.img`
+width: 250px;
+height: 175px;
 border-radius: 50%;
 `
 
@@ -45,36 +63,46 @@ class UserPage extends Component {
 
     getDiscs = () => {
         axios.get(`/api/users/${this.props.match.params.userId}/discs`)
-        .then(res => {
-            console.log(res.data)
-            this.setState({discs: res.data})
-        })
+            .then(res => {
+                console.log(res.data)
+                this.setState({ discs: res.data })
+            })
     }
 
     render() {
         console.log(this.props)
         return (
             <div>
-                <h1>{this.state.user.username}'s page</h1>
                 <div>
-                {this.state.courses.map((course)=> {
-                    return(
-                        <div key={course._id}>
-                        <div>
-                            {course.courseName}
-                        </div>
-                            <PhotoImg src={course.photoUrl} alt={`photo of ${course.courseName}`}/>
-                            <div>{course.location}</div>
-                        </div>
-                    )
-                })}
-                {this.state.discs.map((disc) => {
-                    return(
-                        <div key={disc._id}>
-                        <PhotoImg src={disc.photoUrl} alt={`photo of ${disc.discMake} ${disc.discModel} ${disc.discType}`}/>
-                        </div>
-                    )
-                })}
+                    <h1>{this.state.user.username}'s page</h1>
+                    <h3>Courses</h3>
+                    <WrapperDiv>
+                        {this.state.courses.map((course) => {
+                            return (
+                                <CourseDiv key={course._id}>
+                                    <div>
+                                        {course.courseName}
+                                    </div>
+                                    <div>
+                                    <CoursePhotoImg src={course.photoUrl} alt={`photo of ${course.courseName}`} />
+                                    </div>
+                                    <div>{course.location}</div>
+                                </CourseDiv>
+                            )
+                        })}
+                    </WrapperDiv>
+                    <h3>Discs</h3>
+                    <WrapperDiv>
+                        {this.state.discs.map((disc) => {
+                            return (
+                                <div key={disc._id}>
+                                    <div>
+                                        <DiscPhotoImg src={disc.photoUrl} alt={`photo of ${disc.discMake} ${disc.discModel} ${disc.discType}`} />
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </WrapperDiv>
                 </div>
                 <Link to={`/users/${this.props.match.params.userId}/edit`}>Edit User</Link>
             </div>
