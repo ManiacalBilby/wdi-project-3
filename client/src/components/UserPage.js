@@ -13,7 +13,8 @@ class UserPage extends Component {
 
     state = {
         user: {},
-        courses: []
+        courses: [],
+        discs: []
     }
 
 
@@ -21,6 +22,7 @@ class UserPage extends Component {
     componentWillMount() {
         this.getUser()
         this.getCourses()
+        this.getDiscs()
     }
 
     getUser = () => {
@@ -41,6 +43,14 @@ class UserPage extends Component {
             })
     }
 
+    getDiscs = () => {
+        axios.get(`/api/users/${this.props.match.params.userId}/discs`)
+        .then(res => {
+            console.log(res.data)
+            this.setState({discs: res.data})
+        })
+    }
+
     render() {
         console.log(this.props)
         return (
@@ -55,6 +65,13 @@ class UserPage extends Component {
                         </div>
                             <PhotoImg src={course.photoUrl} alt={`photo of ${course.courseName}`}/>
                             <div>{course.location}</div>
+                        </div>
+                    )
+                })}
+                {this.state.discs.map((disc) => {
+                    return(
+                        <div key={disc._id}>
+                        <PhotoImg src={disc.photoUrl} alt={`photo of ${disc.discMake} ${disc.discModel} ${disc.discType}`}/>
                         </div>
                     )
                 })}
