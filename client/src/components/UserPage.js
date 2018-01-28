@@ -3,6 +3,10 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+const BodyDiv = styled.div`
+margin: 0 5%;
+`
+
 const WrapperDiv = styled.div`
 display: flex;
 flex-wrap: wrap;
@@ -72,10 +76,12 @@ class UserPage extends Component {
     render() {
         console.log(this.props)
         return (
-            <div>
+            <BodyDiv>
                 <div>
                     <h1>{this.state.user.username}'s page</h1>
-                    <h3>Courses</h3>
+                    <div>
+                        <h3>Courses</h3>
+                    </div>
                     <WrapperDiv>
                         {this.state.courses.map((course) => {
                             return (
@@ -84,7 +90,7 @@ class UserPage extends Component {
                                         {course.courseName}
                                     </div>
                                     <div>
-                                    <CoursePhotoImg src={course.photoUrl} alt={`photo of ${course.courseName}`} />
+                                        <CoursePhotoImg src={course.photoUrl} alt={`photo of ${course.courseName}`} />
                                     </div>
                                     <div>{course.location}</div>
                                 </CourseDiv>
@@ -105,7 +111,7 @@ class UserPage extends Component {
                     </WrapperDiv>
                 </div>
                 <Link to={`/users/${this.props.match.params.userId}/edit`}>Edit User</Link>
-            </div>
+            </BodyDiv>
         )
     }
 }
