@@ -31,7 +31,23 @@ User.remove({}).then(() => {
         color: 'Red'
     })
 
-    johnDoe.discs.push(innovaDistanceDriver)
+    const innovaMidRange = new Disc({
+        discType: 'Mid-range',
+        discMake: 'Innova',
+        discModel: 'Spider',
+        photoUrl: 'https://www.innovadiscs.com/wp-content/uploads/2015/02/Star-Spider.jpg',
+        color: 'Orange'
+    })
+
+    const innovaPutter = new Disc({
+        discType: 'Putter',
+        discMake: 'Innova',
+        discModel: 'Aviar',
+        photoUrl: 'https://www.innovadiscs.com/wp-content/uploads/2015/02/R-Pro-Aviar.jpg',
+        color: 'Yellow'
+    })
+
+    johnDoe.discs.push(innovaDistanceDriver, innovaMidRange, innovaPutter)
 
     const deerLickPark = new Course({
         courseName: 'Deer Lick Park',
