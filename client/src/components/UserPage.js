@@ -11,10 +11,12 @@ const WrapperDiv = styled.div`
     align-items: center;
     justify-content: center;
 `
+
 const CourseDiv = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 20px;
 `
 
 const CoursePhotoImg = styled.img`
