@@ -27,7 +27,7 @@ User.remove({}).then(() => {
         discType: 'Distance driver',
         discMake: 'Innova',
         discModel: 'Vulcan',
-        photoUrl: 'https://www.innovadiscs.com/wp-content/uploads/2016/01/vulcan_01.jpg',
+        photoUrl: 'https://www.innovadiscs.com/wp-content/uploads/2015/02/Champion-Vulcan.jpg',
         color: 'Red'
     })
 
