@@ -61,51 +61,51 @@ User.remove({}).then(() => {
 
     return johnDoe.save()
 })
-.catch((error) => {
-    console.log(error)
-})
-.then(() => {
-    const janeDoe = new User({
-        firstName: 'Jane',
-        lastName: 'Doe',
-        username: 'DoeHunter',
-        photoUrl: 'https://www.placecage.com/200/300',
-        throwingHand: 'Left'
+    .catch((error) => {
+        console.log(error)
+    })
+    .then(() => {
+        const janeDoe = new User({
+            firstName: 'Jane',
+            lastName: 'Doe',
+            username: 'DoeHunter',
+            photoUrl: 'https://www.placecage.com/200/300',
+            throwingHand: 'Left'
+        })
+
+        const prodigyDistanceDriver = new Disc({
+            discType: 'Distance driver',
+            discMake: 'Prodigy',
+            discModel: 'D1',
+            photoUrl: 'https://infinitediscs.com/Inf_Uploads/Disc_Images/da6e3f23-927e-4137-9a78-4d7bc4e3f0afProdigy%20D1%20400S.jpg',
+            color: 'Blue'
+        })
+
+        janeDoe.discs.push(prodigyDistanceDriver)
+
+        const oregonPark = new Course({
+            courseName: 'Oregon Park',
+            location: 'Marietta',
+            holes: '18',
+            teePad: 'Concrete',
+            photoUrl: 'https://i.ytimg.com/vi/_OYKngd8_P0/maxresdefault.jpg'
+        })
+
+        janeDoe.courses.push(oregonPark)
+
+        return janeDoe.save()
+    })
+    .catch((error) => {
+        console.log(error)
     })
 
-    const prodigyDistanceDriver = new Disc({
-        discType: 'Distance driver',
-        discMake: 'Prodigy',
-        discModel: 'D1',
-        photoUrl: 'https://infinitediscs.com/Inf_Uploads/Disc_Images/da6e3f23-927e-4137-9a78-4d7bc4e3f0afProdigy%20D1%20400S.jpg',
-        color: 'Blue'
-    })
-
-    janeDoe.discs.push(prodigyDistanceDriver)
-
-    const oregonPark = new Course({
-        courseName: 'Oregon Park',
-        location: 'Marietta',
-        holes: '18',
-        teePad: 'Concrete',
-        photoUrl: 'https://i.ytimg.com/vi/_OYKngd8_P0/maxresdefault.jpg'
-    })
-
-    janeDoe.courses.push(oregonPark)
-
-    return janeDoe.save()
-})
-.catch((error) => {
-    console.log(error)
-})
-
-.then(() => {
-    mongoose.connection.close()
-    console.log(`Finished seeding database...
+    .then(() => {
+        mongoose.connection.close()
+        console.log(`Finished seeding database...
     
     Disconnected from MongoDB
     `)
-})
-.catch((error) => {
-    console.log(error)
-})
+    })
+    .catch((error) => {
+        console.log(error)
+    })

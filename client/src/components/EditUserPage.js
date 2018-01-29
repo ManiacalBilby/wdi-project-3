@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 class EditUserPage extends Component {
 
@@ -49,17 +49,6 @@ class EditUserPage extends Component {
             console.log(error)
         }
     }
-    // deleteUser = async (user) => {
-    //     try {console.log(this.props.match.params.userId)
-    //         await axios.delete(`/api/users/${this.props.match.params.userId}`)
-    //         const userToDelete = this.state.users.indexOf(user)
-    //         const newUsers = [...this.state.users]
-    //         newUsers.splice(userToDelete, 1)
-    //         this.setState({users: newUsers})
-    //     }catch (error) {
-    //         console.log(error)
-    //     }
-    // } 
 
     render() {
         console.log(this.state.user)

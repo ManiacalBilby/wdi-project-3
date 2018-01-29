@@ -30,7 +30,6 @@ class NewUserPage extends Component {
     }
 
     render() {
-        // console.log(this.props.createUser)
         return (
             <div>
                 <h1>Add new user</h1>

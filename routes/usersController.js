@@ -4,30 +4,30 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
     User.find()
-    .then(users => {
-        res.json(users)
-    })
-    .catch((error) => console.log(error))
+        .then(users => {
+            res.json(users)
+        })
+        .catch((error) => console.log(error))
 })
 
 router.post('/', (req, res) => {
     console.log(req.body)
     const newUser = new User(req.body.user)
     newUser.save()
-    .then((user) => {
-        res.json(user)
-    })
-    .catch((error) => console.log(error))
+        .then((user) => {
+            res.json(user)
+        })
+        .catch((error) => console.log(error))
 })
 
 router.get('/:userId', (req, res) => {
     console.log("USERID being searched:", req.params.userId)
     User.findById(req.params.userId)
-    .then(user => {
-        console.log("User found:", user)
-        res.json(user)
-    })
-    .catch((error) => console.log(error))
+        .then(user => {
+            console.log("User found:", user)
+            res.json(user)
+        })
+        .catch((error) => console.log(error))
 })
 
 router.delete('/:userId', (req, res) => {
@@ -36,11 +36,11 @@ router.delete('/:userId', (req, res) => {
     console.log("Deleting: ", userId)
 
     User.findByIdAndRemove(userId)
-    .then((user) => {
-        console.log("Returning: ", user)
-        res.json(user)
-    })
-    .catch((error) => console.log(error))
+        .then((user) => {
+            console.log("Returning: ", user)
+            res.json(user)
+        })
+        .catch((error) => console.log(error))
 })
 
 router.patch('/:userId', (req, res) => {
@@ -50,12 +50,12 @@ router.patch('/:userId', (req, res) => {
     const updatedUserInfo = req.body
     console.log("Updating: ", userId, req.body)
 
-    User.findByIdAndUpdate(userId, updatedUserInfo, {new: true})
-    .then((user) => {
-        console.log("Returning: ", user)
-        res.json(user)
-    })
-    .catch((error) => console.log(error))
+    User.findByIdAndUpdate(userId, updatedUserInfo, { new: true })
+        .then((user) => {
+            console.log("Returning: ", user)
+            res.json(user)
+        })
+        .catch((error) => console.log(error))
 })
 
 
