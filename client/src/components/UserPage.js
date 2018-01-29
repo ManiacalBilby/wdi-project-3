@@ -24,6 +24,10 @@ const CoursePhotoImg = styled.img`
 width: 300px;
 height: 300px;
 border-radius: 50%;
+&:hover{
+    box-shadow: 0px 0px 30px 5px rgba(201,197,201,1);
+    transition: box-shadow 0.2s ease-in-out;
+}
 `
 const DiscPhotoImg = styled.img`
 width: 250px;
