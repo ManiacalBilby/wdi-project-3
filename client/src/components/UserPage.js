@@ -30,8 +30,8 @@ border-radius: 50%;
 }
 `
 const DiscPhotoImg = styled.img`
-width: 250px;
-height: 175px;
+width: 225px;
+height: 150px;
 border-radius: 50%;
 `
 
