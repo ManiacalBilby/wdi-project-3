@@ -3,9 +3,6 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-const BodyDiv = styled.div`
-margin: 0 5%;
-`
 
 const WrapperDiv = styled.div`
 display: flex;
@@ -107,7 +104,7 @@ class UserPage extends Component {
     render() {
         console.log(this.props)
         return (
-            <BodyDiv>
+            <div>
                 <div>
                     <h1>{this.state.user.username}'s page</h1>
                     <div>
@@ -142,7 +139,7 @@ class UserPage extends Component {
                     </WrapperDiv>
                 </div>
                 <EditUserLink to={`/users/${this.props.match.params.userId}/edit`}>Edit User</EditUserLink>
-            </BodyDiv>
+            </div>
         )
     }
 }

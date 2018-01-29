@@ -1,11 +1,27 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-// import styled from 'styled-components'
+import styled from 'styled-components'
 import UserPage from './components/UserPage'
 import NewUserPage from './components/NewUserPage'
 import EditUserPage from './components/EditUserPage'
 import UserList from './components/UserList'
+
+const HeaderDiv = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: rgba(65, 113, 56, .75);
+`
+
+const FooterDiv = HeaderDiv.extend`
+height: 10%;
+margin-top: 5px;
+`
+
+const BodyDiv = styled.div`
+margin: 0 5%;
+`
 
 class App extends Component {
   state = {
@@ -56,12 +72,20 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <HeaderDiv>
+            <h1>Tree Time</h1>
+          </HeaderDiv>
+          <BodyDiv>
           <Switch>
             <Route exact path="/" component={UserListComponent}/>
             <Route exact path="/new" component={NewUserPageComponent} />
             <Route exact path="/users/:userId/edit" component={EditUserPage} />
             <Route exact path="/users/:userId" component={UserPageComponent}/>
           </Switch>
+          </BodyDiv>
+          <FooterDiv>
+            <p></p>
+          </FooterDiv>
         </div>
       </Router>
     );

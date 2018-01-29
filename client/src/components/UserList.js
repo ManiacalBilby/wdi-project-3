@@ -2,16 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-const HeaderDiv = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-background-color: rgba(65, 113, 56, .75);
-`
 
-const BodyDiv = styled.div`
-margin: 0 5%;
-`
 
 const WrapperDiv = styled.div`
 display: flex;
@@ -100,10 +91,7 @@ class UserList extends Component {
     render() {
         return (
             <div>
-                <HeaderDiv>
-                    <h1>TreeTime</h1>
-                </HeaderDiv>
-                <BodyDiv>
+                <div>
                     <h1>Users</h1>
                     <WrapperDiv>
                         {this.props.users.map((user) => {
@@ -123,7 +111,7 @@ class UserList extends Component {
                     <div>
                     <NewUserLink to={"/new"}>Add New User</NewUserLink>
                     </div>
-                </BodyDiv>
+                </div>
             </div>
         )
     }
