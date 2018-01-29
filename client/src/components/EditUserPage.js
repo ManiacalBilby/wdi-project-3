@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class EditUserPage extends Component {
 
@@ -80,8 +80,8 @@ class EditUserPage extends Component {
                         </div>
                         <button>Update User</button>
                     </form>
-                    {/* <button onClick={this.deleteUser}>Delete User!</button> */}
                 </div>
+                <Link to={`/users/${this.state.user._id}`}>Return to User</Link>
             </div>
         )
     }

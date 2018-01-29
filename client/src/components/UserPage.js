@@ -139,6 +139,7 @@ class UserPage extends Component {
                     </WrapperDiv>
                 </div>
                 <EditUserLink to={`/users/${this.props.match.params.userId}/edit`}>Edit User</EditUserLink>
+                <Link to={`/`}>Return to Users</Link>
             </div>
         )
     }
