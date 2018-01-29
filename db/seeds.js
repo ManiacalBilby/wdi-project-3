@@ -57,7 +57,15 @@ User.remove({}).then(() => {
         photoUrl: 'http://www.exploregeorgia.org/master/img/blog/2015/07/candycook_discgolf_deerlickpark.jpg'
     })
 
-    johnDoe.courses.push(deerLickPark)
+    const oregonPark = new Course({
+        courseName: 'Oregon Park',
+        location: 'Marietta',
+        holes: '18',
+        teePad: 'Concrete',
+        photoUrl: 'https://i.ytimg.com/vi/_OYKngd8_P0/maxresdefault.jpg'
+    })
+
+    johnDoe.courses.push(deerLickPark, oregonPark)
 
     return johnDoe.save()
 })
