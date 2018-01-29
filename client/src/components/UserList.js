@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-
-
 const WrapperDiv = styled.div`
 display: flex;
 flex-wrap: wrap;
@@ -34,6 +32,7 @@ const StyledLink = styled(Link) `
 text-decoration: none;
 color: rgb(65, 113, 56);
 `
+
 /* button generator used http://css3buttongenerator.com/ */
 const DeleteButton = styled.button`
 background: #f00c0c;
