@@ -108,7 +108,7 @@ class UserList extends Component {
                         })}
                     </WrapperDiv>
                     <div>
-                    <NewUserLink to={"/new"}>Add New User</NewUserLink>
+                    <NewUserLink to={"/new"}>New User</NewUserLink>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
-// import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 class NewUserPage extends Component {
     state = {
@@ -34,20 +33,6 @@ class NewUserPage extends Component {
         // console.log(this.props.createUser)
         return (
             <div>
-                {/* <h1>Users List Page</h1> */}
-                {/* <div>
-                    {this.props.users.map((user) => {
-                        return (
-                            <div key={user._id}>
-                                <div>
-                                    <Link to={`/users/${user._id}`}>{user.username}</Link>
-                                </div>
-                                <img src={user.photoUrl} alt="user" />
-                                <button onClick={() => this.props.deleteUser(user._id)}>Delete User</button>
-                            </div>
-                        )
-                    })}
-                </div> */}
                 <h1>Add new user</h1>
                 <form onSubmit={this.handleSignUp}>
                     <div>
@@ -72,6 +57,7 @@ class NewUserPage extends Component {
                     </div>
                     <button>Sign up</button>
                 </form>
+                <Link to="/">Return to Users</Link>
             </div>
         )
     }
