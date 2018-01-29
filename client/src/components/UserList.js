@@ -41,6 +41,7 @@ transition: box-shadow 0.2s ease-in-out;
 
 const StyledLink = styled(Link) `
 text-decoration: none;
+color: rgb(65, 113, 56);
 `
 /* button generator used http://css3buttongenerator.com/ */
 const DeleteButton = styled.button`
