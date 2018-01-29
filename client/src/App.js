@@ -14,11 +14,6 @@ justify-content: center;
 background-color: rgba(65, 113, 56, .75);
 `
 
-const FooterDiv = HeaderDiv.extend`
-height: 10%;
-margin-top: 5px;
-`
-
 const BodyDiv = styled.div`
 margin: 0 5%;
 `
@@ -83,9 +78,6 @@ class App extends Component {
             <Route exact path="/users/:userId" component={UserPageComponent}/>
           </Switch>
           </BodyDiv>
-          <FooterDiv>
-            <p></p>
-          </FooterDiv>
         </div>
       </Router>
     );
