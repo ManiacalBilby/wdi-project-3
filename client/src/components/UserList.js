@@ -100,7 +100,7 @@ class UserList extends Component {
                                         <StyledLink to={`/users/${user._id}`}>{user.username}</StyledLink>
                                     </div>
                                     <div>
-                                        <UserPhotoImg src={user.photoUrl} alt="user" />
+                                        <Link to={`/users/${user._id}`}><UserPhotoImg src={user.photoUrl} alt="user" /></Link>
                                     </div>
                                     <DeleteButton onClick={() => this.props.deleteUser(user._id)}>Delete</DeleteButton>
                                 </UserDiv>
