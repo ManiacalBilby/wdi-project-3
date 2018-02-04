@@ -95,15 +95,16 @@ class UserList extends Component {
                     <WrapperDiv>
                         {this.props.users.map((user) => {
                             return (
-                                <UserDiv key={user._id}>
+                                <Link to={`/users/${user._id}`}><UserDiv key={user._id}>
                                     <div>
-                                        <StyledLink to={`/users/${user._id}`}>{user.username}</StyledLink>
+                                        {user.username}
                                     </div>
                                     <div>
-                                        <Link to={`/users/${user._id}`}><UserPhotoImg src={user.photoUrl} alt="user" /></Link>
+                                        <UserPhotoImg src={user.photoUrl} alt="user" />
                                     </div>
                                     <DeleteButton onClick={() => this.props.deleteUser(user._id)}>Delete</DeleteButton>
                                 </UserDiv>
+                                </Link>
                             )
                         })}
                     </WrapperDiv>
