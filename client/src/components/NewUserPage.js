@@ -8,7 +8,7 @@ class NewUserPage extends Component {
             lastName: '',
             username: '',
             photoUrl: '',
-            throwingHand: ''
+            throwingHand: 'Left, Right, or Ambi'
         }
     }
 
@@ -36,15 +36,15 @@ class NewUserPage extends Component {
                 <form onSubmit={this.handleSignUp}>
                     <div>
                         <label htmlFor="firstName">First Name</label>
-                        <input onChange={this.handleChange} name="firstName" type="text" value={this.state.firstName} />
+                        <input onChange={this.handleChange} name="firstName" type="text" defaultValue="Required" value={this.state.firstName} />
                     </div>
                     <div>
                         <label htmlFor="lastName">Last Name</label>
-                        <input onChange={this.handleChange} name="lastName" type="text" value={this.state.lastName} />
+                        <input onChange={this.handleChange} name="lastName" type="text" defaultValue="Required" value={this.state.lastName} />
                     </div>
                     <div>
                         <label htmlFor="username">Username</label>
-                        <input onChange={this.handleChange} name="username" type="text" value={this.state.username} />
+                        <input onChange={this.handleChange} name="username" type="text" defaultValue="Required" value={this.state.username} />
                     </div>
                     <div>
                         <label htmlFor="photoUrl">Photo Link</label>
@@ -52,7 +52,7 @@ class NewUserPage extends Component {
                     </div>
                     <div>
                         <label htmlFor="throwingHand">Throwing Hand</label>
-                        <input onChange={this.handleChange} name="throwingHand" type="text" value={this.state.throwingHand} />
+                        <input onChange={this.handleChange} name="throwingHand" type="text" defaultValue="Left, Right, or Ambi" value={this.state.throwingHand} />
                     </div>
                     <button>Sign up</button>
                 </form>
