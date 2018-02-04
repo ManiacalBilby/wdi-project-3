@@ -11,8 +11,7 @@ const HeaderDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: rgba(65, 113, 56, .75); */
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/5f/Winthrop-DGC-Panorama.jpg")
+    background-color: rgba(65, 113, 56, .75);
     font-family: 'Questrial', sans-serif;
 `
 
