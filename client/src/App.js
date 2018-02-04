@@ -11,11 +11,14 @@ const HeaderDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(65, 113, 56, .75);
+    /* background-color: rgba(65, 113, 56, .75); */
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/5f/Winthrop-DGC-Panorama.jpg")
+    font-family: 'Questrial', sans-serif;
 `
 
 const BodyDiv = styled.div`
     margin: 0 5%;
+    font-family: 'Questrial', sans-serif;
 `
 
 class App extends Component {
