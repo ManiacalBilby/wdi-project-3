@@ -28,9 +28,13 @@ const UserPhotoImg = styled.img`
 }
 `
 
-const StyledLink = styled(Link) `
+const StyledLink = styled(Link)`
     text-decoration: none;
     color: rgb(65, 113, 56);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
 `
 
 /* button generator used http://css3buttongenerator.com/ */
@@ -60,7 +64,7 @@ const DeleteButton = styled.button`
 }
 `
 
-const NewUserLink = styled(Link) `
+const NewUserLink = styled(Link)`
     background: #43703a;
     background-image: -webkit-linear-gradient(top, #43703a, #1d8f4a);
     background-image: -moz-linear-gradient(top, #43703a, #1d8f4a);
@@ -87,34 +91,35 @@ const NewUserLink = styled(Link) `
 `
 
 class UserList extends Component {
-    render() {
-        return (
-            <div>
-                <div>
-                    <h1>Users</h1>
-                    <WrapperDiv>
-                        {this.props.users.map((user) => {
-                            return (
-                                <Link to={`/users/${user._id}`}><UserDiv key={user._id}>
-                                    <div>
-                                        {user.username}
+  render() {
+    return (
+      <div>
+        <div>
+          <h1>Users</h1>
+          <WrapperDiv>
+                {this.props.users.map(user => (
+
+                    <UserDiv key={user._id}>
+                        <StyledLink to={`/users/${user._id}`}>
+                            <div>
+                                      {user.username}
                                     </div>
-                                    <div>
-                                        <UserPhotoImg src={user.photoUrl} alt="user" />
+                            <div>
+                                      <UserPhotoImg src={user.photoUrl} alt="user" />
                                     </div>
-                                    <DeleteButton onClick={() => this.props.deleteUser(user._id)}>Delete</DeleteButton>
-                                </UserDiv>
-                                </Link>
-                            )
-                        })}
-                    </WrapperDiv>
-                    <div>
-                        <NewUserLink to={"/new"}>New User</NewUserLink>
-                    </div>
-                </div>
-            </div>
-        )
-    }
+                          </StyledLink>
+                        <DeleteButton onClick={() => this.props.deleteUser(user._id)}>Delete</DeleteButton>
+                      </UserDiv>
+
+                            ))}
+              </WrapperDiv>
+          <div>
+                <NewUserLink to="/new">New User</NewUserLink>
+              </div>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default UserList
