@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 
 const WrapperDiv = styled.div`
@@ -35,7 +36,7 @@ const DiscPhotoImg = styled.img`
     border-radius: 50%;
 `
 
-const EditUserLink = styled(Link) `
+const EditUserLink = styled(Link)`
     background: #43703a;
     background-image: -webkit-linear-gradient(top, #43703a, #1d8f4a);
     background-image: -moz-linear-gradient(top, #43703a, #1d8f4a);
@@ -62,89 +63,90 @@ const EditUserLink = styled(Link) `
 `
 
 class UserPage extends Component {
-
     state = {
-        user: {},
-        courses: [],
-        discs: []
+      user: {},
+      courses: [],
+      discs: [],
     }
-
 
 
     componentWillMount() {
-        this.getUser()
-        this.getCourses()
-        this.getDiscs()
+      this.getUser()
+      this.getCourses()
+      this.getDiscs()
     }
 
     getUser = () => {
-
-        axios.get(`/api/users/${this.props.match.params.userId}`)
-            .then(res => {
-                console.log("Response from API:", res.data)
-                this.setState({ user: res.data })
-                console.log("User in state:", this.state.user)
-            })
+      axios.get(`/api/users/${this.props.match.params.userId}`)
+        .then((res) => {
+          // console.log('Response from API:', res.data)
+          this.setState({ user: res.data })
+          // console.log('User in state:', this.state.user)
+        })
     }
 
     getCourses = () => {
-        axios.get(`/api/users/${this.props.match.params.userId}/courses`)
-            .then(res => {
-                console.log(res.data)
-                this.setState({ courses: res.data })
-            })
+      axios.get(`/api/users/${this.props.match.params.userId}/courses`)
+        .then((res) => {
+          // console.log(res.data)
+          this.setState({ courses: res.data })
+        })
     }
 
     getDiscs = () => {
-        axios.get(`/api/users/${this.props.match.params.userId}/discs`)
-            .then(res => {
-                console.log(res.data)
-                this.setState({ discs: res.data })
-            })
+      axios.get(`/api/users/${this.props.match.params.userId}/discs`)
+        .then((res) => {
+          // console.log(res.data)
+          this.setState({ discs: res.data })
+        })
     }
 
     render() {
-        console.log(this.props)
-        return (
+      // console.log(this.props)
+      return (
+        <div>
+          <div>
+            <h1>{this.state.user.username}&apos;s page</h1>
             <div>
-                <div>
-                    <h1>{this.state.user.username}'s page</h1>
-                    <div>
-                        <h3>Courses</h3>
-                    </div>
-                    <WrapperDiv>
-                        {this.state.courses.map((course) => {
-                            return (
-                                <CourseDiv key={course._id}>
-                                    <div>
-                                        {course.courseName}
-                                    </div>
-                                    <div>
-                                        <CoursePhotoImg src={course.photoUrl} alt={`photo of ${course.courseName}`} />
-                                    </div>
-                                    <div>{course.location}</div>
-                                </CourseDiv>
-                            )
-                        })}
-                    </WrapperDiv>
-                    <h3>Discs</h3>
-                    <WrapperDiv>
-                        {this.state.discs.map((disc) => {
-                            return (
-                                <div key={disc._id}>
-                                    <div>
-                                        <DiscPhotoImg src={disc.photoUrl} alt={`photo of ${disc.discMake} ${disc.discModel} ${disc.discType}`} />
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </WrapperDiv>
-                </div>
-                <EditUserLink to={`/users/${this.props.match.params.userId}/edit`}>Edit User</EditUserLink>
-                <Link to={`/`}>Return to Users</Link>
+              <h3>Courses</h3>
             </div>
-        )
+            <WrapperDiv>
+              {this.state.courses.map(course => (
+                <CourseDiv key={course._id}>
+                  <div>
+                    {course.courseName}
+                  </div>
+                  <div>
+                    <CoursePhotoImg src={course.photoUrl} alt={`photo of ${course.courseName}`} />
+                  </div>
+                  <div>{course.location}</div>
+                </CourseDiv>
+                            ))}
+            </WrapperDiv>
+            <h3>Discs</h3>
+            <WrapperDiv>
+              {this.state.discs.map(disc => (
+                <div key={disc._id}>
+                  <div>
+                    <DiscPhotoImg src={disc.photoUrl} alt={`photo of ${disc.discMake} ${disc.discModel} ${disc.discType}`} />
+                  </div>
+                </div>
+                            ))}
+            </WrapperDiv>
+          </div>
+          <EditUserLink to={`/users/${this.props.match.params.userId}/edit`}>Edit User</EditUserLink>
+          <Link to="/">Return to Users</Link>
+        </div>
+      )
     }
+}
+
+UserPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      userId: PropTypes.number,
+    }),
+  }).isRequired,
 }
 
 export default UserPage
