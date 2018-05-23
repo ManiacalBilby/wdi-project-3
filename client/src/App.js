@@ -22,67 +22,68 @@ const BodyDiv = styled.div`
 
 class App extends Component {
     state = {
-        users: [],
-        user: {}
+      users: [],
+      // user: {},
     }
     componentWillMount() {
-        this.getAllUsers()
+      this.getAllUsers()
     }
 
     getAllUsers = () => {
-        axios.get('/api/users')
-            .then(res => {
-                console.log(res.data)
-                this.setState({ users: res.data })
-            })
+      axios.get('/api/users')
+        .then((res) => {
+          this.setState({ users: res.data })
+        })
     }
 
     createUser = (newUser) => {
-        console.log('From create Route')
-        axios.post('/api/users', {
-            user: newUser
+      axios.post('/api/users', {
+        user: newUser,
+      })
+        .then((res) => {
+          const newUsers = [...this.state.users]
+          newUsers.push(res.data)
+          this.setState({ users: newUsers })
         })
-            .then((res) => {
-                console.log("After post route", this.state.user)
-                const newUsers = [...this.state.users]
-                newUsers.push(res.data)
-                this.setState({ users: newUsers })
-            })
     }
 
     deleteUser = (userid) => {
-        console.log(userid)
-        axios.delete('/api/users/' + userid)
-            .then((res) => {
-                console.log("Deleted!")
-                const newUsers = [...this.state.users]
-                const userToDelete = this.state.users.indexOf(userid)
-                newUsers.splice(userToDelete, 1)
-                this.setState({ users: newUsers })
-            })
+      axios.delete(`/api/users/${userid}`)
+        .then(() => {
+          const newUsers = [...this.state.users]
+          const userToDelete = this.state.users.indexOf(userid)
+          newUsers.splice(userToDelete, 1)
+          this.setState({ users: newUsers })
+        })
     }
 
     render() {
-        const UserPageComponent = (props) => (<UserPage {...props} />)
-        const NewUserPageComponent = () => (<NewUserPage users={this.state.users} createUser={this.createUser} />)
-        const UserListComponent = () => (<UserList users={this.state.users} deleteUser={this.deleteUser} />)
-        return (
-            <Router>
-                <div>
-                    <HeaderDiv>
-                        <h1>Tree Time</h1>
-                    </HeaderDiv>
-                    <BodyDiv>
-                        <Switch>
-                            <Route exact path="/" component={UserListComponent} />
-                            <Route exact path="/new" component={NewUserPageComponent} />
-                            <Route exact path="/users/:userId/edit" component={EditUserPage} />
-                            <Route exact path="/users/:userId" component={UserPageComponent} />
-                        </Switch>
-                    </BodyDiv>
-                </div>
-            </Router>
-        );
+      const UserPageComponent = props => (<UserPage {...props} />)
+      const NewUserPageComponent = () => (<NewUserPage
+        users={this.state.users}
+        createUser={this.createUser}
+      />)
+      const UserListComponent = () => (<UserList
+        users={this.state.users}
+        deleteUser={this.deleteUser}
+      />)
+      return (
+        <Router>
+          <div>
+            <HeaderDiv>
+              <h1>Tree Time</h1>
+            </HeaderDiv>
+            <BodyDiv>
+              <Switch>
+                <Route exact path="/" component={UserListComponent} />
+                <Route exact path="/new" component={NewUserPageComponent} />
+                <Route exact path="/users/:userId/edit" component={EditUserPage} />
+                <Route exact path="/users/:userId" component={UserPageComponent} />
+              </Switch>
+            </BodyDiv>
+          </div>
+        </Router>
+      );
     }
 }
 
