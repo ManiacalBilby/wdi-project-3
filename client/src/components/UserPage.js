@@ -144,7 +144,7 @@ class UserPage extends Component {
 UserPage.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      userId: PropTypes.number,
+      userId: PropTypes.string,
     }),
   }).isRequired,
 }
