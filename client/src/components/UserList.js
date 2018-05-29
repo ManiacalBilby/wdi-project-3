@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const WrapperDiv = styled.div`
     display: flex;
@@ -90,36 +91,37 @@ const NewUserLink = styled(Link)`
 }
 `
 
-class UserList extends Component {
-  render() {
-    return (
-      <div>
-        <div>
-          <h1>Users</h1>
-          <WrapperDiv>
-                {this.props.users.map(user => (
+const UserList = ({ ...props }) => (
+  <div>
+    <div>
+      <h1>Users</h1>
+      <WrapperDiv>
+        {props.users.map(user => (
 
-                    <UserDiv key={user._id}>
-                        <StyledLink to={`/users/${user._id}`}>
-                            <div>
-                                      {user.username}
-                                    </div>
-                            <div>
-                                      <UserPhotoImg src={user.photoUrl} alt="user" />
-                                    </div>
-                          </StyledLink>
-                        <DeleteButton onClick={() => this.props.deleteUser(user._id)}>Delete</DeleteButton>
-                      </UserDiv>
-
-                            ))}
-              </WrapperDiv>
-          <div>
-                <NewUserLink to="/new">New User</NewUserLink>
+          <UserDiv key={user._id}>
+            <StyledLink to={`/users/${user._id}`}>
+              <div>
+                {user.username}
               </div>
-        </div>
+              <div>
+                <UserPhotoImg src={user.photoUrl} alt="user" />
+              </div>
+            </StyledLink>
+            <DeleteButton onClick={() => props.deleteUser(user._id)}>Delete</DeleteButton>
+          </UserDiv>
+                            ))}
+      </WrapperDiv>
+      <div>
+        <NewUserLink to="/new">New User</NewUserLink>
       </div>
-    )
-  }
+    </div>
+  </div>
+)
+
+UserList.propTypes = {
+  users: PropTypes.oneOfType([
+    PropTypes.array,
+  ]).isRequired,
 }
 
 export default UserList
